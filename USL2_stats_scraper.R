@@ -76,20 +76,21 @@ names(teams_gp_df)[which(names(teams_gp_df)=="X6")] <- "Points"
 names(teams_gp_df)[which(names(teams_gp_df)=="X7")] <- "GF"
 names(teams_gp_df)[which(names(teams_gp_df)=="X8")] <- "GA"
 names(teams_gp_df)[which(names(teams_gp_df)=="X9")] <- "GD"
-names(teams_gp_df)[which(names(teams_gp_df)=="X10")] <- "Division Record"
+names(teams_gp_df)[which(names(teams_gp_df)=="X10")] <- "Division Record (W-L-T)"
 teams_gp_df$Wins <- as.numeric(teams_gp_df$Wins)
 teams_gp_df$Ties <- as.numeric(teams_gp_df$Ties)
 teams_gp_df$Losses <- as.numeric(teams_gp_df$Losses)
 teams_gp_df$Team_GP <- teams_gp_df$Wins+teams_gp_df$Losses+teams_gp_df$Ties
 teams_gp_df <- teams_gp_df[,c(1,11,10,2:9)]
 teams_gp_df2 <- teams_gp_df[1:3]
+teams_gp_df2$`Division Record`<- gsub("-","-", teams_gp_df2$`Division Record`)
 
 ## merging team data with player data
 merged_data <- merge(df, teams_gp_df2,
                      by.x = "Team", by.y = "Team Name",
                      all.x = TRUE)
 merged_data <- merged_data[,c(2,1,4,11,12,3,5:10)]
-
+str(merged_data)
 write.csv(merged_data, file = "player_stats.csv")
 
 ## testing player data from googleAPI spreadsheet
