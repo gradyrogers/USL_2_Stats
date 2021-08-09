@@ -1,6 +1,6 @@
 # USL_2_Stats
 
-Description
+**Description**
 
 Scraper designed to provide up to date stats for USL League Two, the 4th tier of US soccer. The web scraper is written with functions from the XML2 library in R. Pulls both individual player data, as well as team records for the season. The data has been merged in the end to include the following attributes:
   Player Name
@@ -17,7 +17,7 @@ Scraper designed to provide up to date stats for USL League Two, the 4th tier of
   Own Goals (player)
 
 
-Methods
+**Methods**
 
 For player data, the league site is laid out in 70+ pages of interactive table data. Each webpage includes 30 players. However, the filtration and query possibilities are        limited (only largest to smallest & vice versa for numerical atttributes, alphabetical order for character attributes). To scrape this, I dug into the HTML to find a page        specific URL. Then, I used a for loop to pull data from each page.
 
@@ -26,7 +26,7 @@ For team data, the league site is laid out far more simply. By navigating to the
 For the dataset merge, I only included a few attributes from the team data for my future desired uses of the data. For this reason, I used an outer join that kept all data from player data, but not necessarily all teams from team data. The sets were merged on team name.
 
 
-Notes
+**Notes**
 
 The URLs used in the code are for the 2021 season. The code will need to be updated for future seasons to pull relevant data. The code could also be changed to pull past season data. 
 
